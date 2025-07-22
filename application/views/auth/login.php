@@ -27,10 +27,17 @@
           <p class="login-box-msg">Masuk untuk mulai sesi</p>
 
           <?php if ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <?= $this->session->flashdata('error') ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
           <?php endif; ?>
+
           <?php if ($this->session->flashdata('success')): ?>
-            <div class="alert alert-success"><?= $this->session->flashdata('success') ?></div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <?= $this->session->flashdata('success') ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
           <?php endif; ?>
 
           <?= form_open('auth/login') ?>
@@ -71,5 +78,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <script src="<?= base_url('assets/adminlte/dist/js/adminlte.js') ?>"></script>
+
+    <script>
+      setTimeout(function () {
+        let alert = document.querySelector('.alert');
+        if (alert) {
+          let bsAlert = new bootstrap.Alert(alert);
+          bsAlert.close();
+        }
+      }, 3000); // 3000ms = 3 detik
+    </script>
+
   </body>
 </html>

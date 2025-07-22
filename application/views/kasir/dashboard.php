@@ -18,40 +18,52 @@
 
   <div class="app-content">
     <div class="container-fluid">
-      <div class="row">
-        <!-- Total Penjualan -->
-        <div class="col-lg-4 col-6">
-          <div class="small-box text-bg-primary">
-            <div class="inner">
-              <h3><?= $total_penjualan ?></h3>
-              <p>Jumlah Transaksi</p>
-            </div>
-            <i class="bi bi-cart-check-fill small-box-icon fs-1"></i>
+    <div class="row">
+      <!-- Total Transaksi -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box text-bg-primary">
+          <div class="inner">
+            <h3><?= $total_penjualan ?></h3>
+            <p>Total Transaksi</p>
           </div>
-        </div>
-
-        <!-- Total Pendapatan -->
-        <div class="col-lg-4 col-6">
-          <div class="small-box text-bg-success">
-            <div class="inner">
-              <h3>Rp <?= number_format($total_pendapatan, 0, ',', '.') ?></h3>
-              <p>Pendapatan Hari Ini</p>
-            </div>
-            <i class="bi bi-cash-coin small-box-icon fs-1"></i>
-          </div>
-        </div>
-
-        <!-- Stok Buku -->
-        <div class="col-lg-4 col-6">
-          <div class="small-box text-bg-warning">
-            <div class="inner">
-              <h3><?= $stok_buku ?></h3>
-              <p>Total Stok Buku</p>
-            </div>
-            <i class="bi bi-book-half small-box-icon fs-1"></i>
-          </div>
+          <i class="bi bi-cart-check-fill small-box-icon fs-1"></i>
         </div>
       </div>
+
+      <!-- Transaksi Hari Ini -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box text-bg-info">
+          <div class="inner">
+            <h3><?= $penjualan_hari_ini ?></h3>
+            <p>Transaksi Hari Ini</p>
+          </div>
+          <i class="bi bi-calendar-check small-box-icon fs-1"></i>
+        </div>
+      </div>
+
+      <!-- Total Pendapatan -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box text-bg-success">
+          <div class="inner">
+            <h3>Rp <?= number_format($total_pendapatan, 0, ',', '.') ?></h3>
+            <p>Pendapatan Hari Ini</p>
+          </div>
+          <i class="bi bi-cash-coin small-box-icon fs-1"></i>
+        </div>
+      </div>
+
+      <!-- Stok Buku -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box text-bg-warning">
+          <div class="inner">
+            <h3><?= $stok_buku ?></h3>
+            <p>Total Stok Buku</p>
+          </div>
+          <i class="bi bi-book-half small-box-icon fs-1"></i>
+        </div>
+      </div>
+    </div>
+
 
       <!-- Transaksi Terakhir -->
       <div class="row mt-4">

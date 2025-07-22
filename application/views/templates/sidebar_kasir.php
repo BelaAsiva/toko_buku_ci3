@@ -17,7 +17,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="<?= base_url('kasir/transaksi') ?>" class="nav-link">
+          <a href="<?= base_url('kasir/transaksi/index') ?>" class="nav-link">
             <i class="nav-icon bi bi-cart-plus"></i>
             <p>Transaksi</p>
           </a>

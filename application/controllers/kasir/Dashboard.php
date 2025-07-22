@@ -12,10 +12,11 @@ class Dashboard extends CI_Controller {
   }
 
   public function index() {
-    $user_id = $this->session->userdata('id');
-    
+    $user_id = $this->session->userdata('user_id');
+
     $data['title'] = 'Dashboard Kasir';
     $data['total_penjualan'] = $this->Dashboard_model->count_penjualan_by_user($user_id);
+    $data['penjualan_hari_ini'] = $this->Dashboard_model->count_penjualan_hari_ini_by_user($user_id);
     $data['total_pendapatan'] = $this->Dashboard_model->total_pendapatan_hari_ini($user_id);
     $data['stok_buku'] = $this->Dashboard_model->count_stok_buku();
     $data['transaksi_terakhir'] = $this->Dashboard_model->transaksi_terakhir($user_id);

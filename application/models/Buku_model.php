@@ -32,4 +32,21 @@ class Buku_model extends CI_Model {
     public function delete($id) {
         $this->db->delete('buku', ['id' => $id]);
     }
+
+    // Untuk mengambil buku tertentu sekaligus dengan nama kategori-nya (dipakai di detail transaksi misalnya)
+    public function getDetailById($id) {
+        return $this->db->select('b.*, k.nama_kategori')
+                        ->from('buku b')
+                        ->join('kategori k', 'k.id = b.kategori_id')
+                        ->where('b.id', $id)
+                        ->get()->row();
+    }
+
+    // Untuk menurunkan stok setelah transaksi
+    public function kurangiStok($id, $jumlah) {
+        $this->db->set('stok', 'stok - ' . (int) $jumlah, FALSE)
+                ->where('id', $id)
+                ->update('buku');
+    }
+
 }

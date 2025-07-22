@@ -1,6 +1,6 @@
 <!-- Load Header dan Sidebar -->
-<!-- <?php $this->load->view('templates/header'); ?>
-<?php $this->load->view('templates/sidebar_admin'); ?> -->
+<?php $this->load->view('templates/header'); ?>
+<?php $this->load->view('templates/sidebar_admin'); ?>
 
 <!--begin::App Main-->
 <main class="app-main">
@@ -75,15 +75,33 @@
 
       <!-- Grafik & Statistik -->
       <div class="row">
+        <!-- Statistik Penjualan -->
         <div class="col-lg-7 connectedSortable">
           <div class="card mb-4">
             <div class="card-header"><h3 class="card-title">Statistik Penjualan</h3></div>
             <div class="card-body">
-              <div id="revenue-chart"></div>
+              <!-- Tampilan tabel sederhana untuk statistik penjualan -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Total Penjualan (Rp)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($statistik_penjualan as $row): ?>
+                    <tr>
+                      <td><?= date('d M Y', strtotime($row->tanggal)) ?></td>
+                      <td><?= number_format($row->total, 0, ',', '.') ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
+        <!-- Kategori Populer -->
         <div class="col-lg-5 connectedSortable">
           <div class="card text-white bg-primary bg-gradient border-primary mb-4">
             <div class="card-header border-0">
@@ -96,23 +114,14 @@
               </div>
             </div>
             <div class="card-body">
-              <div id="world-map" style="height: 220px"></div>
-            </div>
-            <div class="card-footer border-0">
-              <div class="row text-center">
-                <div class="col-4">
-                  <div id="sparkline-1" class="text-dark"></div>
-                  <div class="text-white">Novel</div>
-                </div>
-                <div class="col-4">
-                  <div id="sparkline-2" class="text-dark"></div>
-                  <div class="text-white">Komik</div>
-                </div>
-                <div class="col-4">
-                  <div id="sparkline-3" class="text-dark"></div>
-                  <div class="text-white">Pelajaran</div>
-                </div>
-              </div>
+              <ul class="list-group list-group-flush">
+                <?php foreach ($kategori_populer as $kat): ?>
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent text-white">
+                    <?= $kat['nama_kategori'] ?>
+                    <span class="badge bg-light text-dark"><?= $kat['total_terjual'] ?> buku</span>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
             </div>
           </div>
         </div>
@@ -123,4 +132,4 @@
   <!--end::App Content-->
 </main>
 
-<!-- <?php $this->load->view('templates/footer'); ?> -->
+<?php $this->load->view('templates/footer'); ?>

@@ -20,6 +20,7 @@
         <?php if ($this->session->flashdata('error')): ?>
           <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
         <?php endif; ?>
+
         <?php if ($this->session->flashdata('success')): ?>
           <div class="alert alert-success"><?= $this->session->flashdata('success') ?></div>
         <?php endif; ?>
@@ -81,5 +82,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"></script>
   <script src="<?= base_url('assets/adminlte/dist/js/adminlte.js') ?>"></script>
+
+  <script>
+      setTimeout(function () {
+        let alert = document.querySelector('.alert');
+        if (alert) {
+          let bsAlert = new bootstrap.Alert(alert);
+          bsAlert.close();
+        }
+      }, 3000); // 3000ms = 3 detik
+    </script>
 </body>
 </html>
